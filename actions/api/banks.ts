@@ -1,6 +1,6 @@
 'use server';
 
-import { getAccessToken } from "@/utils/session-token-accessor";
+
 
 export interface Bank {
   id: number;
@@ -11,13 +11,12 @@ export interface Bank {
 export async function getBanks(): Promise<Bank[] | { error: string }> {
   try {
     const url = `${process.env.BACKEND_URL}/api/banks`;
-    const accessToken = await getAccessToken();
-
+    
     const resp = await fetch(url, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',        
       },
+      cache: "force-cache",
     });
 
     if (resp.ok) {

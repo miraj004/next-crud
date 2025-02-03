@@ -42,6 +42,7 @@ export async function getPosts(): Promise<Post[] | undefined> {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
+      cache: "force-cache",
     });
 
     if (resp.ok) {
