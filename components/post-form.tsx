@@ -28,6 +28,10 @@ export default function PostForm({ post }: Props) {
   
   const [state, formAction] = useActionState(action, initialState);
 
+  if (state === undefined) {
+    return null
+  }
+
   return (
     <form className="space-y-4" action={formAction}>
       <div>
